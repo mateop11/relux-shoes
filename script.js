@@ -565,15 +565,17 @@ function openModal(product, brand) {
     whatsapp1.href = whatsapp1Url;
     whatsapp2.href = whatsapp2Url;
     
-    // Remove old handlers and add new ones for mobile compatibility
+    // Mobile-friendly click handlers
     whatsapp1.onclick = function(e) {
         e.stopPropagation();
-        // Let the default <a> behavior work (better for mobile)
+        window.location.href = whatsapp1Url;
+        return false;
     };
     
     whatsapp2.onclick = function(e) {
         e.stopPropagation();
-        // Let the default <a> behavior work (better for mobile)
+        window.location.href = whatsapp2Url;
+        return false;
     };
     
     // Show modal
