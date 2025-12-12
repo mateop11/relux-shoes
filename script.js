@@ -557,10 +557,26 @@ function openModal(product, brand) {
     modalSizes.innerHTML = sizesHtml;
     
     // Set WhatsApp links with product info
-    const message = encodeURIComponent(`Hola RELUX! 👟\n\nMe interesa cotizar:\n\n📦 Producto: ${product.name}\n💰 Precio: ${product.price}\n🏷️ Marca: ${brandNames[brand]}\n\n¿Está disponible?`);
+    const message = encodeURIComponent(`Hola RELUX! Me interesa cotizar: ${product.name} - Precio: ${product.price} - Marca: ${brandNames[brand]}. Esta disponible?`);
     
-    whatsapp1.href = `https://wa.me/${WHATSAPP_1}?text=${message}`;
-    whatsapp2.href = `https://wa.me/${WHATSAPP_2}?text=${message}`;
+    const whatsapp1Url = `https://wa.me/${WHATSAPP_1}?text=${message}`;
+    const whatsapp2Url = `https://wa.me/${WHATSAPP_2}?text=${message}`;
+    
+    whatsapp1.href = whatsapp1Url;
+    whatsapp2.href = whatsapp2Url;
+    
+    // Add click handlers to ensure WhatsApp opens
+    whatsapp1.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(whatsapp1Url, '_blank');
+    };
+    
+    whatsapp2.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(whatsapp2Url, '_blank');
+    };
     
     // Show modal
     modal.classList.add('active');
