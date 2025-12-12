@@ -565,18 +565,9 @@ function openModal(product, brand) {
     whatsapp1.href = whatsapp1Url;
     whatsapp2.href = whatsapp2Url;
     
-    // Mobile-friendly click handlers
-    whatsapp1.onclick = function(e) {
-        e.stopPropagation();
-        window.location.href = whatsapp1Url;
-        return false;
-    };
-    
-    whatsapp2.onclick = function(e) {
-        e.stopPropagation();
-        window.location.href = whatsapp2Url;
-        return false;
-    };
+    // Remove any previous handlers
+    whatsapp1.onclick = null;
+    whatsapp2.onclick = null;
     
     // Show modal
     modal.classList.add('active');
